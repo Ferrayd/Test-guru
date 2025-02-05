@@ -1,0 +1,21 @@
+<h2>Test</h2>
+<div>
+  <%= @test.title %>
+  <p><strong>test level: </strong><%= @test.level %> </p>
+</div>
+<div>
+  <%= l(@test.created_at, format: :short) %>
+</div>
+
+<h3>Questions</h3>
+
+<%=link_to "New question", new_test_questions_path(@test) %>
+
+<ol>
+  <%= render partial: 'question/question', collection: @test.questions %>
+</ol>
+
+
+<%= link_to 'Edit', edit_admin_test_path(@test) %>
+
+<%= link_to 'Back', admin_tests_path %>

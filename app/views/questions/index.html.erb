@@ -1,0 +1,21 @@
+<h1>Questions for Test: <%= @test.title %></h1>
+
+<ul>
+  <% @test.questions.each do |question| %>
+    <% if question.present? && question.id.present? %>
+      <li>
+        <p><%= link_to "Вопрос #{question.id}", question_path(question) %></p>
+        <p><%= question.body %></p>
+        <p><%= link_to "Отредактировать вопрос", edit_question_path(question) %></p>
+        <%= button_to "Удалить вопрос", question_path(question), method: :delete, data: { confirm: 'Are you sure you want to delete this question?' } %>
+      </li>
+    <% else %>
+      <p>Вопрос недоступен</p>
+    <% end %>
+  <% end %>
+</ul>
+
+
+<p><%= link_to "Создать новый вопрос", new_test_question_path(@test) %></p>
+<p><%= link_to "Все вопросы теста", test_questions_path(@test) %></p>
+<p><%= link_to "Назад к тесту", test_path(@test) %></p>

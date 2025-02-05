@@ -1,0 +1,15 @@
+<h1>Question: <%= @question.id %></h1>
+
+<p><%= @question.body %></p>
+
+<h2>Answers</h2>
+
+<%= link_to 'New answer', new_question_answer_path(@question) %>
+
+<ol>
+  <%= render @question.answers %>
+</ol>
+
+<%= link_to 'Отредактировать вопрос', edit_question_path(@question) %>
+<%= link_to 'Назад к вопросам', test_questions_path(@test) %>
+<%= button_to 'Удалить вопрос', test_questions_path(@test), method: :delete %> 
